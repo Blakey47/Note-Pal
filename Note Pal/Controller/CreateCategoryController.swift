@@ -6,4 +6,21 @@
 //  Copyright © 2017 Darragh. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class CreateCategoryController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.title = "Create Category"
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        
+        view.backgroundColor = .white
+    }
+    
+    @objc func handleCancel() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+}

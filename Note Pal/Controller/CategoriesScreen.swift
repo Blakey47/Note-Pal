@@ -8,12 +8,54 @@
 
 import UIKit
 
-class CategoriesScreen: UIViewController {
+class CategoriesScreen: UITableViewController {
+    
+    let categories = [
+        Category(name: "Work", numberOfTasks: 3),
+        Category(name: "Personal", numberOfTasks: 5),
+        Category(name: "Home", numberOfTasks: 7)
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.title = "Categories"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(handleAddCategory))
+        tableView.separatorColor = .lightGrey
+        tableView.tableFooterView = UIView()
+    }
+    
+    @objc func handleAddCategory() {
+        
+        let createCategoryController = CreateCategoryController()
+        
+        let navController = AppCategoriesNavigationController(rootViewController: createCategoryController)
+        
+        present(navController, animated: true, completion: nil)
         
     }
-
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .lightGrey
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categories.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        let category = categories[indexPath.row]
+        
+        cell.textLabel?.text = category.name
+        return cell
+    }
+    
 }
