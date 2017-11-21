@@ -11,9 +11,9 @@ import UIKit
 class CategoriesScreen: UITableViewController {
     
     let categories = [
-        Category(name: "Work", numberOfTasks: 3),
-        Category(name: "Personal", numberOfTasks: 5),
-        Category(name: "Home", numberOfTasks: 7)
+        Category(name: "Work"),
+        Category(name: "Personal"),
+        Category(name: "Home")
     ]
 
     override func viewDidLoad() {
@@ -26,11 +26,8 @@ class CategoriesScreen: UITableViewController {
     }
     
     @objc func handleAddCategory() {
-        
         let createCategoryController = CreateCategoryController()
-        
-        let navController = AppCategoriesNavigationController(rootViewController: createCategoryController)
-        
+        let navController = CustomerNavigationController(rootViewController: createCategoryController)
         present(navController, animated: true, completion: nil)
         
     }

@@ -11,6 +11,5 @@ import Foundation
 struct Category {
     
     let name: String
-    let numberOfTasks: Int
     
 }
