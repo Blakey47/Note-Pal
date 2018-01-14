@@ -15,6 +15,7 @@
 		A76D8C511FC4724E00B8613A /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D8C501FC4724E00B8613A /* UIColor+theme.swift */; };
 		A76D8C571FC4C59100B8613A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D8C561FC4C59100B8613A /* Category.swift */; };
 		A76D8C591FC4C9B400B8613A /* CreateCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D8C581FC4C9B400B8613A /* CreateCategoryController.swift */; };
+		A7B396D0200BC15F00BADC26 /* NotePalModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7B396CE200BC15F00BADC26 /* NotePalModels.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A76D8C501FC4724E00B8613A /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 		A76D8C561FC4C59100B8613A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A76D8C581FC4C9B400B8613A /* CreateCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryController.swift; sourceTree = "<group>"; };
+		A7B396CF200BC15F00BADC26 /* NotePalModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotePalModels.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				A76D8C501FC4724E00B8613A /* UIColor+theme.swift */,
+				A7B396CE200BC15F00BADC26 /* NotePalModels.xcdatamodeld */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				A76D8C4B1FC45C9200B8613A /* CategoriesScreen.swift in Sources */,
 				A76D8C591FC4C9B400B8613A /* CreateCategoryController.swift in Sources */,
 				A76D8C571FC4C59100B8613A /* Category.swift in Sources */,
+				A7B396D0200BC15F00BADC26 /* NotePalModels.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +370,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A7B396CE200BC15F00BADC26 /* NotePalModels.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A7B396CF200BC15F00BADC26 /* NotePalModels.xcdatamodel */,
+			);
+			currentVersion = A7B396CF200BC15F00BADC26 /* NotePalModels.xcdatamodel */;
+			path = NotePalModels.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A76D8C2D1FC45B7B00B8613A /* Project object */;
 }

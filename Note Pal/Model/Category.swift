@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct Category {
-    
-    let name: String
-    
-}
+//struct Category {
+//    
+//    let name: String
+//    
+//}
+

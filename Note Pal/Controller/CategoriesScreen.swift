@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CategoriesScreen: UITableViewController, CreateCategoryControllerDelegate {
     
@@ -16,15 +17,36 @@ class CategoriesScreen: UITableViewController, CreateCategoryControllerDelegate 
         tableView.insertRows(at: [newIndexPath], with: .automatic)
     }
     
+    private func fetchCategories() {
+        // Attempt to fetch my core data
+        let persistentContainer = NSPersistentContainer(name: "NotePalModels")
+        persistentContainer.loadPersistentStores { (storeDescription, err) in
+            if let err = err {
+                fatalError("Loading of store failed: \(err)")
+            }
+        }
+        let context = persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
+        
+        do {
+            let categories = try context.fetch(fetchRequest)
+            categories.forEach({ (category) in
+                print(category.name ?? "")
+            })
+        } catch let fetchErr {
+            print("Failed to fetch categories:", fetchErr)
+        }
+        
+    }
     
-    var categories = [
-        Category(name: "Work"),
-        Category(name: "Personal"),
-        Category(name: "Home")
-    ]
+    var categories = [Category]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchCategories()
+        
         navigationItem.title = "Note Pal"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(handleAddCategory))

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 // Custom Delegation
 
@@ -55,11 +56,31 @@ class CreateCategoryController: UIViewController {
     }
     
     @objc private func handleSave() {
-        dismiss(animated: true) {
-            guard let name = self.nameTextField.text else { return }
-            let category = Category(name: name)
-            self.delegate?.didAddCategory(category: category)
+        
+        // Initializing Persistance
+        let persistentContainer = NSPersistentContainer(name: "NotePalModels")
+        persistentContainer.loadPersistentStores { (storeDescription, err) in
+            if let err = err {
+                fatalError("Loading of store failed: \(err)")
+            }
         }
+        let context = persistentContainer.viewContext
+        let category = NSEntityDescription.insertNewObject(forEntityName: "Category", into: context)
+        category.setValue(nameTextField.text, forKey: "name")
+        
+        // Performing Save
+        do {
+            try context.save()
+        } catch let saveErr {
+            print("Failed to save category:", saveErr)
+        }
+        
+        
+//        dismiss(animated: true) {
+//            guard let name = self.nameTextField.text else { return }
+//            let category = Category(name: name)
+//            self.delegate?.didAddCategory(category: category)
+//        }
     }
     
     @objc func handleCancel() {
