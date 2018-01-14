@@ -18,14 +18,7 @@ class CategoriesScreen: UITableViewController, CreateCategoryControllerDelegate 
     }
     
     private func fetchCategories() {
-        // Attempt to fetch my core data
-        let persistentContainer = NSPersistentContainer(name: "NotePalModels")
-        persistentContainer.loadPersistentStores { (storeDescription, err) in
-            if let err = err {
-                fatalError("Loading of store failed: \(err)")
-            }
-        }
-        let context = persistentContainer.viewContext
+        let context = CoreDataManager.shared.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
         
@@ -34,6 +27,9 @@ class CategoriesScreen: UITableViewController, CreateCategoryControllerDelegate 
             categories.forEach({ (category) in
                 print(category.name ?? "")
             })
+            
+            self.categories = categories
+            self.tableView.reloadData()
         } catch let fetchErr {
             print("Failed to fetch categories:", fetchErr)
         }
