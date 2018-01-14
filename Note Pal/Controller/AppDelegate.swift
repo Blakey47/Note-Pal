@@ -10,7 +10,7 @@ import UIKit
 
 class CustomerNavigationController: UINavigationController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
 }
 
@@ -24,10 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().barTintColor = .darkPurple
+//        UINavigationBar.appearance().barTintColor = .darkPurple
         UINavigationBar.appearance().prefersLargeTitles = true
-        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.darkPurple]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.darkPurple]
         
         return true
     }

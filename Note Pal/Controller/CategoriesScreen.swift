@@ -18,9 +18,10 @@ class CategoriesScreen: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Categories"
+        navigationItem.title = "Note Pal"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(handleAddCategory))
+        navigationItem.rightBarButtonItem?.tintColor = .darkPurple
         tableView.separatorColor = .lightGrey
         tableView.tableFooterView = UIView()
     }
@@ -52,6 +53,7 @@ class CategoriesScreen: UITableViewController {
         let category = categories[indexPath.row]
         
         cell.textLabel?.text = category.name
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         return cell
     }
     
