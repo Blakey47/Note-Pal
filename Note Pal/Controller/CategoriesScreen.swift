@@ -8,14 +8,21 @@
 
 import UIKit
 
-class CategoriesScreen: UITableViewController {
+class CategoriesScreen: UITableViewController, CreateCategoryControllerDelegate {
     
-    let categories = [
+    func didAddCategory(category: Category) {
+        categories.append(category)
+        let newIndexPath = IndexPath(row: categories.count - 1, section: 0)
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
+    }
+    
+    
+    var categories = [
         Category(name: "Work"),
         Category(name: "Personal"),
         Category(name: "Home")
     ]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Note Pal"
@@ -29,6 +36,7 @@ class CategoriesScreen: UITableViewController {
     @objc func handleAddCategory() {
         let createCategoryController = CreateCategoryController()
         let navController = CustomerNavigationController(rootViewController: createCategoryController)
+        createCategoryController.delegate = self
         present(navController, animated: true, completion: nil)
         
     }
