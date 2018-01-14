@@ -83,4 +83,35 @@ class CategoriesScreen: UITableViewController, CreateCategoryControllerDelegate 
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
+            let category = self.categories[indexPath.row]
+            
+            self.categories.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            let context = CoreDataManager.shared.persistentContainer.viewContext
+            context.delete(category)
+            do {
+                try context.save()
+            } catch let saveErr {
+                print("Failed to delete category:", saveErr)
+            }
+        }
+        
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (_, indexPath) in
+            print("Editing category...")
+        }
+        
+        return [deleteAction, editAction]
+    }
+    
 }
+
+
+
+
+
+
+
