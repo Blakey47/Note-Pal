@@ -22,7 +22,7 @@ class CategoriesScreen: UITableViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(handleAddCategory))
         navigationItem.rightBarButtonItem?.tintColor = .darkPurple
-        tableView.separatorColor = .lightGrey
+        tableView.separatorColor = .clear
         tableView.tableFooterView = UIView()
     }
     
@@ -53,7 +53,7 @@ class CategoriesScreen: UITableViewController {
         let category = categories[indexPath.row]
         
         cell.textLabel?.text = category.name
-        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         return cell
     }
     

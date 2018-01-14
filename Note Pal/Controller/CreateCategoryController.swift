@@ -13,7 +13,7 @@ class CreateCategoryController: UIViewController {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Name"
-        label.textColor = .darkPurple
+        label.backgroundColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -33,7 +33,6 @@ class CreateCategoryController: UIViewController {
         
         navigationItem.title = "Create Category"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        navigationItem.leftBarButtonItem?.tintColor = .darkPurple
         
         view.backgroundColor = .white
         
