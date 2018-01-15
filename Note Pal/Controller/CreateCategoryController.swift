@@ -12,9 +12,16 @@ import CoreData
 // Custom Delegation
 protocol CreateCategoryControllerDelegate {
     func didAddCategory(category: Category)
+    func didEditCategory(category: Category)
 }
 
 class CreateCategoryController: UIViewController {
+    
+    var category: Category? {
+        didSet {
+            nameTextField.text = category?.name
+        }
+    }
     
     var delegate: CreateCategoryControllerDelegate?
     
@@ -41,12 +48,17 @@ class CreateCategoryController: UIViewController {
         return view
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationItem.title = category == nil ? "Create Category" : "Edit Category"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         
-        navigationItem.title = "Create Category"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
         
@@ -55,14 +67,32 @@ class CreateCategoryController: UIViewController {
     }
     
     @objc private func handleSave() {
+        if category == nil {
+            createCatgory()
+        } else {
+            saveCategoryChanges()
+        }
+    }
+    
+    private func saveCategoryChanges() {
         let context = CoreDataManager.shared.persistentContainer.viewContext
-        
-        let category = NSEntityDescription.insertNewObject(forEntityName: "Category", into: context)
-        category.setValue(nameTextField.text, forKey: "name")
-        
+        category?.name = nameTextField.text
         do {
             try context.save()
-            
+            dismiss(animated: true, completion: {
+                self.delegate?.didEditCategory(category: self.category!)
+            })
+        } catch let saveErr {
+            print("Failed to save category changes:", saveErr)
+        }
+    }
+    
+    private func createCatgory() {
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        let category = NSEntityDescription.insertNewObject(forEntityName: "Category", into: context)
+        category.setValue(nameTextField.text, forKey: "name")
+        do {
+            try context.save()            
             dismiss(animated: true, completion: {
                 self.delegate?.didAddCategory(category: category as! Category)
             })
