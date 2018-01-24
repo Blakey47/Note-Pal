@@ -51,10 +51,29 @@ class CategoriesScreen: UITableViewController, CreateCategoryControllerDelegate 
         
         navigationItem.title = "Note Pal"
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(handleAddCategory))
         navigationItem.rightBarButtonItem?.tintColor = .darkPurple
         tableView.separatorColor = .clear
         tableView.tableFooterView = UIView()
+    }
+    
+    @objc private func handleReset() {
+        print("Attempting to delete all CoreData Objects...")
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: Category.fetchRequest())
+        do {
+            try context.execute(batchDeleteRequest)
+            var indexPathsToRemove = [IndexPath]()
+            for (index, _) in categories.enumerated() {
+                let indexPath = IndexPath(row: index, section: 0)
+                indexPathsToRemove.append(indexPath)
+            }
+            categories.removeAll()
+            tableView.deleteRows(at: indexPathsToRemove, with: .left)
+        } catch let delErr {
+            print("Failed to delete objects from CoreData:", delErr)
+        }
     }
     
     @objc func handleAddCategory() {
@@ -63,6 +82,19 @@ class CategoriesScreen: UITableViewController, CreateCategoryControllerDelegate 
         createCategoryController.delegate = self
         present(navController, animated: true, completion: nil)
         
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "No categories available"
+        label.textColor = .darkPurple
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return categories.count == 0 ? 150 : 0
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -86,6 +118,9 @@ class CategoriesScreen: UITableViewController, CreateCategoryControllerDelegate 
         
         cell.textLabel?.text = category.name
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        cell.imageView?.image = #imageLiteral(resourceName: "ic_list")
+        cell.imageView?.tintColor = .darkPurple
         return cell
     }
     
