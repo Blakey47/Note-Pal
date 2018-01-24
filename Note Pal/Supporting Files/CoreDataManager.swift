@@ -20,4 +20,19 @@ class CoreDataManager {
         }
         return container
     }()
+    
+    func fetchCategories() -> [Category] {
+        let context = persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
+        
+        do {
+            let categories = try context.fetch(fetchRequest)
+            return categories
+        } catch let fetchErr {
+            print("Failed to fetch categories:", fetchErr)
+            return []
+        }
+    }
+    
 }

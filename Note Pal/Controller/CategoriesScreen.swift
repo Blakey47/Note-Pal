@@ -9,45 +9,14 @@
 import UIKit
 import CoreData
 
-class CategoriesScreen: UITableViewController, CreateCategoryControllerDelegate {
-    
-    func didEditCategory(category: Category) {
-        let row = categories.index(of: category)
-        let reloadIndexPath = IndexPath(row: row!, section: 0)
-        tableView.reloadRows(at: [reloadIndexPath], with: .middle)
-    }
-    
-    func didAddCategory(category: Category) {
-        categories.append(category)
-        let newIndexPath = IndexPath(row: categories.count - 1, section: 0)
-        tableView.insertRows(at: [newIndexPath], with: .automatic)
-    }
-    
-    private func fetchCategories() {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
-        
-        do {
-            let categories = try context.fetch(fetchRequest)
-            categories.forEach({ (category) in
-                print(category.name ?? "")
-            })
-            
-            self.categories = categories
-            self.tableView.reloadData()
-        } catch let fetchErr {
-            print("Failed to fetch categories:", fetchErr)
-        }
-        
-    }
+class CategoriesScreen: UITableViewController {
     
     var categories = [Category]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchCategories()
+        self.categories = CoreDataManager.shared.fetchCategories()
         
         navigationItem.title = "Note Pal"
         
@@ -58,103 +27,7 @@ class CategoriesScreen: UITableViewController, CreateCategoryControllerDelegate 
         tableView.tableFooterView = UIView()
     }
     
-    @objc private func handleReset() {
-        print("Attempting to delete all CoreData Objects...")
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: Category.fetchRequest())
-        do {
-            try context.execute(batchDeleteRequest)
-            var indexPathsToRemove = [IndexPath]()
-            for (index, _) in categories.enumerated() {
-                let indexPath = IndexPath(row: index, section: 0)
-                indexPathsToRemove.append(indexPath)
-            }
-            categories.removeAll()
-            tableView.deleteRows(at: indexPathsToRemove, with: .left)
-        } catch let delErr {
-            print("Failed to delete objects from CoreData:", delErr)
-        }
-    }
-    
-    @objc func handleAddCategory() {
-        let createCategoryController = CreateCategoryController()
-        let navController = CustomerNavigationController(rootViewController: createCategoryController)
-        createCategoryController.delegate = self
-        present(navController, animated: true, completion: nil)
         
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = "No categories available"
-        label.textColor = .darkPurple
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        return label
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return categories.count == 0 ? 150 : 0
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .lightGrey
-        return view
-    }
-    
-    override func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        let category = categories[indexPath.row]
-        
-        cell.textLabel?.text = category.name
-        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        
-        cell.imageView?.image = #imageLiteral(resourceName: "ic_list")
-        cell.imageView?.tintColor = .darkPurple
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
-            let category = self.categories[indexPath.row]
-            
-            self.categories.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            
-            let context = CoreDataManager.shared.persistentContainer.viewContext
-            context.delete(category)
-            do {
-                try context.save()
-            } catch let saveErr {
-                print("Failed to delete category:", saveErr)
-            }
-        }
-        
-        let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: editHandlerFunction)
-        editAction.backgroundColor = .darkPurple
-        
-        return [deleteAction, editAction]
-    }
-    
-    private func editHandlerFunction(action: UITableViewRowAction, indexPath: IndexPath) {
-        let editCategoryController = CreateCategoryController()
-        editCategoryController.delegate = self
-        editCategoryController.category = categories[indexPath.row]
-        let navController = CustomerNavigationController(rootViewController: editCategoryController)
-        present(navController, animated: true, completion: nil)
-    }
-    
 }
 
 

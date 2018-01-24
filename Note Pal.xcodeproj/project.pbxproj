@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A734494C2019308C00C467F5 /* CategoriesScreen+CreateCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A734494B2019308C00C467F5 /* CategoriesScreen+CreateCategory.swift */; };
+		A734494E201931AB00C467F5 /* CategoriesScreen+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A734494D201931AB00C467F5 /* CategoriesScreen+UITableView.swift */; };
 		A74C926F200BDB770076553D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74C926E200BDB770076553D /* CoreDataManager.swift */; };
+		A762B19320193A0B008D9FDC /* CategoryScreen+HandlerFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762B19220193A0B008D9FDC /* CategoryScreen+HandlerFunctions.swift */; };
 		A76D8C391FC45B7B00B8613A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D8C381FC45B7B00B8613A /* AppDelegate.swift */; };
 		A76D8C3E1FC45B7B00B8613A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76D8C3C1FC45B7B00B8613A /* Main.storyboard */; };
 		A76D8C401FC45B7B00B8613A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A76D8C3F1FC45B7B00B8613A /* Assets.xcassets */; };
@@ -20,7 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A734494B2019308C00C467F5 /* CategoriesScreen+CreateCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoriesScreen+CreateCategory.swift"; sourceTree = "<group>"; };
+		A734494D201931AB00C467F5 /* CategoriesScreen+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoriesScreen+UITableView.swift"; sourceTree = "<group>"; };
 		A74C926E200BDB770076553D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		A762B19220193A0B008D9FDC /* CategoryScreen+HandlerFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryScreen+HandlerFunctions.swift"; sourceTree = "<group>"; };
 		A76D8C351FC45B7B00B8613A /* Note Pal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Note Pal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A76D8C381FC45B7B00B8613A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A76D8C3D1FC45B7B00B8613A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +112,9 @@
 			children = (
 				A76D8C501FC4724E00B8613A /* UIColor+theme.swift */,
 				A74C926E200BDB770076553D /* CoreDataManager.swift */,
+				A734494D201931AB00C467F5 /* CategoriesScreen+UITableView.swift */,
+				A734494B2019308C00C467F5 /* CategoriesScreen+CreateCategory.swift */,
+				A762B19220193A0B008D9FDC /* CategoryScreen+HandlerFunctions.swift */,
 				A7B396CE200BC15F00BADC26 /* NotePalModels.xcdatamodeld */,
 			);
 			path = "Supporting Files";
@@ -185,9 +194,12 @@
 			files = (
 				A76D8C511FC4724E00B8613A /* UIColor+theme.swift in Sources */,
 				A76D8C391FC45B7B00B8613A /* AppDelegate.swift in Sources */,
+				A762B19320193A0B008D9FDC /* CategoryScreen+HandlerFunctions.swift in Sources */,
 				A76D8C4B1FC45C9200B8613A /* CategoriesScreen.swift in Sources */,
+				A734494C2019308C00C467F5 /* CategoriesScreen+CreateCategory.swift in Sources */,
 				A76D8C591FC4C9B400B8613A /* CreateCategoryController.swift in Sources */,
 				A76D8C571FC4C59100B8613A /* Category.swift in Sources */,
+				A734494E201931AB00C467F5 /* CategoriesScreen+UITableView.swift in Sources */,
 				A74C926F200BDB770076553D /* CoreDataManager.swift in Sources */,
 				A7B396D0200BC15F00BADC26 /* NotePalModels.xcdatamodeld in Sources */,
 			);
