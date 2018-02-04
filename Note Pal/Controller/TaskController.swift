@@ -21,14 +21,8 @@ class TaskController: UITableViewController, CreateTaskControllerDelegate {
     }
     
     private func fetchTasks() {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        let request = NSFetchRequest<Task>(entityName: "Task")
-        do {
-            let tasks = try context.fetch(request)
-            self.tasks = tasks
-        } catch let err {
-            print("Failed to fetch tasks:", err)
-        }
+        guard let categoryTasks = category?.tasks?.allObjects as? [Task] else { return }
+        self.tasks = categoryTasks
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,6 +52,7 @@ class TaskController: UITableViewController, CreateTaskControllerDelegate {
     @objc private func handleAdd() {
         let createTaskController = CreateTaskController()
         createTaskController.delegate = self
+        createTaskController.category = category
         let navController = CustomNavigationController(rootViewController: createTaskController)
         present(navController, animated: true, completion: nil)
     }

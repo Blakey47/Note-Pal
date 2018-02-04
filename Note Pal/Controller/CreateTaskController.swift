@@ -14,6 +14,8 @@ protocol CreateTaskControllerDelegate {
 
 class CreateTaskController: UIViewController {
     
+    var category: Category?
+    
     var delegate: CreateTaskControllerDelegate?
     
     let nameLabel: UILabel = {
@@ -45,7 +47,9 @@ class CreateTaskController: UIViewController {
     
     @objc private func handleSave() {
         guard let taskName = nameTextField.text else { return }
-        let tuple = CoreDataManager.shared.createTask(taskName: taskName)
+        guard let category = category else { return }
+        
+        let tuple = CoreDataManager.shared.createTask(taskName: taskName, category: category)
         if let error = tuple.1 {
             print(error)
         } else {

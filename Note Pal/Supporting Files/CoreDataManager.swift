@@ -9,6 +9,7 @@
 import CoreData
 
 class CoreDataManager {
+    
     static let shared = CoreDataManager()
     
     let persistentContainer: NSPersistentContainer = {
@@ -35,13 +36,18 @@ class CoreDataManager {
         }
     }
     
-    func createTask(taskName: String) -> (Task?, Error?) {
+    func createTask(taskName: String, category: Category) -> (Task?, Error?) {
         let context = persistentContainer.viewContext
+        
         let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: context) as! Task
         task.setValue(taskName, forKey: "name")
+        
+        task.category = category
+        
         let taskInformation = NSEntityDescription.insertNewObject(forEntityName: "TaskInformation", into: context) as! TaskInformation
         taskInformation.notes = "Add more sugar!"
         task.taskInformation = taskInformation
+        
         do {
             try context.save()
             return (task, nil)
