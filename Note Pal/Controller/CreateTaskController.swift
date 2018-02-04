@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol CreateTaskControllerDelegate {
+    func didAddTask(task: Task)
+}
+
 class CreateTaskController: UIViewController {
+    
+    var delegate: CreateTaskControllerDelegate?
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -39,11 +45,13 @@ class CreateTaskController: UIViewController {
     
     @objc private func handleSave() {
         guard let taskName = nameTextField.text else { return }
-        let error = CoreDataManager.shared.createTask(taskName: taskName)
-        if let error = error {
+        let tuple = CoreDataManager.shared.createTask(taskName: taskName)
+        if let error = tuple.1 {
             print(error)
         } else {
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: {
+                self.delegate?.didAddTask(task: tuple.0!)
+            })
         }
     }
     
