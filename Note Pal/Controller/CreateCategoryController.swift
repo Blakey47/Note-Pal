@@ -59,7 +59,7 @@ class CreateCategoryController: UIViewController {
         
         setupUI()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        setupCancelButton()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
         
         view.backgroundColor = .white
@@ -99,10 +99,6 @@ class CreateCategoryController: UIViewController {
         } catch let saveErr {
             print("Failed to save category:", saveErr)
         }
-    }
-    
-    @objc func handleCancel() {
-        dismiss(animated: true, completion: nil)
     }
     
     private func setupUI() {

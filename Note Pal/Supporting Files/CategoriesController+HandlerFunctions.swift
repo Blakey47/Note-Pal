@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-extension CategoriesScreen {
+extension CategoriesController {
     
-    @objc private func handleReset() {
+    @objc func handleReset() {
         print("Attempting to delete all CoreData Objects...")
         let context = CoreDataManager.shared.persistentContainer.viewContext
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: Category.fetchRequest())
@@ -24,8 +24,8 @@ extension CategoriesScreen {
             }
             categories.removeAll()
             tableView.deleteRows(at: indexPathsToRemove, with: .left)
-        } catch let delErr {
-            print("Failed to delete objects from CoreData:", delErr)
+        } catch let err {
+            print("Failed to delete objects from CoreData:", err)
         }
     }
     

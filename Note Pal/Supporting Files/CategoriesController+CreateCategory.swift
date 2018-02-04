@@ -1,5 +1,5 @@
 //
-//  CategoriesScreen+CreateCategory.swift
+//  CategoriesController+CreateCategory.swift
 //  Note Pal
 //
 //  Created by Darragh on 1/24/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension CategoriesScreen: CreateCategoryControllerDelegate {
+extension CategoriesController: CreateCategoryControllerDelegate {
     
     func didEditCategory(category: Category) {
         let row = categories.index(of: category)

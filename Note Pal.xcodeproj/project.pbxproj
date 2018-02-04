@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A734494C2019308C00C467F5 /* CategoriesScreen+CreateCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A734494B2019308C00C467F5 /* CategoriesScreen+CreateCategory.swift */; };
-		A734494E201931AB00C467F5 /* CategoriesScreen+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A734494D201931AB00C467F5 /* CategoriesScreen+UITableView.swift */; };
+		A7234D212027644B00C52E6D /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7234D202027644B00C52E6D /* UIViewController+Helpers.swift */; };
+		A7234D232027654F00C52E6D /* CreateTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7234D222027654F00C52E6D /* CreateTaskController.swift */; };
+		A734494C2019308C00C467F5 /* CategoriesController+CreateCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A734494B2019308C00C467F5 /* CategoriesController+CreateCategory.swift */; };
+		A734494E201931AB00C467F5 /* CategoriesController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A734494D201931AB00C467F5 /* CategoriesController+UITableView.swift */; };
 		A74C926F200BDB770076553D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74C926E200BDB770076553D /* CoreDataManager.swift */; };
-		A762B19320193A0B008D9FDC /* CategoryScreen+HandlerFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762B19220193A0B008D9FDC /* CategoryScreen+HandlerFunctions.swift */; };
+		A762B19320193A0B008D9FDC /* CategoriesController+HandlerFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762B19220193A0B008D9FDC /* CategoriesController+HandlerFunctions.swift */; };
+		A766EF272026315D00FE0B50 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A766EF262026315D00FE0B50 /* TaskController.swift */; };
 		A76D8C391FC45B7B00B8613A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D8C381FC45B7B00B8613A /* AppDelegate.swift */; };
 		A76D8C3E1FC45B7B00B8613A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76D8C3C1FC45B7B00B8613A /* Main.storyboard */; };
 		A76D8C401FC45B7B00B8613A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A76D8C3F1FC45B7B00B8613A /* Assets.xcassets */; };
 		A76D8C431FC45B7B00B8613A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A76D8C411FC45B7B00B8613A /* LaunchScreen.storyboard */; };
-		A76D8C4B1FC45C9200B8613A /* CategoriesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D8C4A1FC45C9200B8613A /* CategoriesScreen.swift */; };
+		A76D8C4B1FC45C9200B8613A /* CategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D8C4A1FC45C9200B8613A /* CategoriesController.swift */; };
 		A76D8C511FC4724E00B8613A /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D8C501FC4724E00B8613A /* UIColor+theme.swift */; };
 		A76D8C571FC4C59100B8613A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D8C561FC4C59100B8613A /* Category.swift */; };
 		A76D8C591FC4C9B400B8613A /* CreateCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76D8C581FC4C9B400B8613A /* CreateCategoryController.swift */; };
@@ -23,17 +26,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A734494B2019308C00C467F5 /* CategoriesScreen+CreateCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoriesScreen+CreateCategory.swift"; sourceTree = "<group>"; };
-		A734494D201931AB00C467F5 /* CategoriesScreen+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoriesScreen+UITableView.swift"; sourceTree = "<group>"; };
+		A7234D202027644B00C52E6D /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
+		A7234D222027654F00C52E6D /* CreateTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskController.swift; sourceTree = "<group>"; };
+		A734494B2019308C00C467F5 /* CategoriesController+CreateCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoriesController+CreateCategory.swift"; sourceTree = "<group>"; };
+		A734494D201931AB00C467F5 /* CategoriesController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoriesController+UITableView.swift"; sourceTree = "<group>"; };
 		A74C926E200BDB770076553D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		A762B19220193A0B008D9FDC /* CategoryScreen+HandlerFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryScreen+HandlerFunctions.swift"; sourceTree = "<group>"; };
+		A762B19220193A0B008D9FDC /* CategoriesController+HandlerFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoriesController+HandlerFunctions.swift"; sourceTree = "<group>"; };
+		A766EF262026315D00FE0B50 /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		A76D8C351FC45B7B00B8613A /* Note Pal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Note Pal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A76D8C381FC45B7B00B8613A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A76D8C3D1FC45B7B00B8613A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A76D8C3F1FC45B7B00B8613A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A76D8C421FC45B7B00B8613A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A76D8C441FC45B7B00B8613A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A76D8C4A1FC45C9200B8613A /* CategoriesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesScreen.swift; sourceTree = "<group>"; };
+		A76D8C4A1FC45C9200B8613A /* CategoriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesController.swift; sourceTree = "<group>"; };
 		A76D8C501FC4724E00B8613A /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 		A76D8C561FC4C59100B8613A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A76D8C581FC4C9B400B8613A /* CreateCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryController.swift; sourceTree = "<group>"; };
@@ -51,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7234D1F2027642F00C52E6D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A7234D202027644B00C52E6D /* UIViewController+Helpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		A76D8C2C1FC45B7B00B8613A = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +84,7 @@
 		A76D8C371FC45B7B00B8613A /* Note Pal */ = {
 			isa = PBXGroup;
 			children = (
+				A7234D1F2027642F00C52E6D /* Helpers */,
 				A76D8C4E1FC45D7400B8613A /* Controller */,
 				A76D8C4D1FC45D6F00B8613A /* View */,
 				A76D8C4C1FC45D6900B8613A /* Model */,
@@ -101,8 +116,10 @@
 			isa = PBXGroup;
 			children = (
 				A76D8C381FC45B7B00B8613A /* AppDelegate.swift */,
-				A76D8C4A1FC45C9200B8613A /* CategoriesScreen.swift */,
+				A76D8C4A1FC45C9200B8613A /* CategoriesController.swift */,
+				A766EF262026315D00FE0B50 /* TaskController.swift */,
 				A76D8C581FC4C9B400B8613A /* CreateCategoryController.swift */,
+				A7234D222027654F00C52E6D /* CreateTaskController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -112,9 +129,9 @@
 			children = (
 				A76D8C501FC4724E00B8613A /* UIColor+theme.swift */,
 				A74C926E200BDB770076553D /* CoreDataManager.swift */,
-				A734494D201931AB00C467F5 /* CategoriesScreen+UITableView.swift */,
-				A734494B2019308C00C467F5 /* CategoriesScreen+CreateCategory.swift */,
-				A762B19220193A0B008D9FDC /* CategoryScreen+HandlerFunctions.swift */,
+				A734494D201931AB00C467F5 /* CategoriesController+UITableView.swift */,
+				A734494B2019308C00C467F5 /* CategoriesController+CreateCategory.swift */,
+				A762B19220193A0B008D9FDC /* CategoriesController+HandlerFunctions.swift */,
 				A7B396CE200BC15F00BADC26 /* NotePalModels.xcdatamodeld */,
 			);
 			path = "Supporting Files";
@@ -194,12 +211,15 @@
 			files = (
 				A76D8C511FC4724E00B8613A /* UIColor+theme.swift in Sources */,
 				A76D8C391FC45B7B00B8613A /* AppDelegate.swift in Sources */,
-				A762B19320193A0B008D9FDC /* CategoryScreen+HandlerFunctions.swift in Sources */,
-				A76D8C4B1FC45C9200B8613A /* CategoriesScreen.swift in Sources */,
-				A734494C2019308C00C467F5 /* CategoriesScreen+CreateCategory.swift in Sources */,
+				A7234D232027654F00C52E6D /* CreateTaskController.swift in Sources */,
+				A762B19320193A0B008D9FDC /* CategoriesController+HandlerFunctions.swift in Sources */,
+				A76D8C4B1FC45C9200B8613A /* CategoriesController.swift in Sources */,
+				A7234D212027644B00C52E6D /* UIViewController+Helpers.swift in Sources */,
+				A734494C2019308C00C467F5 /* CategoriesController+CreateCategory.swift in Sources */,
 				A76D8C591FC4C9B400B8613A /* CreateCategoryController.swift in Sources */,
 				A76D8C571FC4C59100B8613A /* Category.swift in Sources */,
-				A734494E201931AB00C467F5 /* CategoriesScreen+UITableView.swift in Sources */,
+				A766EF272026315D00FE0B50 /* TaskController.swift in Sources */,
+				A734494E201931AB00C467F5 /* CategoriesController+UITableView.swift in Sources */,
 				A74C926F200BDB770076553D /* CoreDataManager.swift in Sources */,
 				A7B396D0200BC15F00BADC26 /* NotePalModels.xcdatamodeld in Sources */,
 			);

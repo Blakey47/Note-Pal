@@ -8,7 +8,14 @@
 
 import UIKit
 
-extension CategoriesScreen {
+extension CategoriesController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let category = categories[indexPath.row]
+        let taskController = TaskController()
+        taskController.category = category
+        navigationController?.pushViewController(taskController, animated: true)
+    }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         

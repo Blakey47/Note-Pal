@@ -1,5 +1,5 @@
 //
-//  CategoriesScreen.swift
+//  CategoriesController.swift
 //  Note Pal
 //
 //  Created by Darragh on 11/21/17.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CategoriesScreen: UITableViewController {
+class CategoriesController: UITableViewController {
     
     var categories = [Category]()
     
@@ -21,7 +21,7 @@ class CategoriesScreen: UITableViewController {
         navigationItem.title = "Note Pal"
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(handleAddCategory))
+        setupPlusButtonInNavBar(selector: #selector(handleAddCategory))
         navigationItem.rightBarButtonItem?.tintColor = .darkPurple
         tableView.separatorColor = .clear
         tableView.tableFooterView = UIView()
