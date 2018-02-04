@@ -60,7 +60,7 @@ class CreateCategoryController: UIViewController {
         setupUI()
         
         setupCancelButton()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
+        setupSaveButton(selector: #selector(handleSave))
         
         view.backgroundColor = .white
         
@@ -102,14 +102,7 @@ class CreateCategoryController: UIViewController {
     }
     
     private func setupUI() {
-        let backgroundView = UIView()
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(backgroundView)
-        backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        backgroundView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        setupBackgroundView()
         
         view.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: view.topAnchor).isActive = true

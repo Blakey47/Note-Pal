@@ -26,7 +26,7 @@ class TaskController: UITableViewController {
     
     @objc private func handleAdd() {
         let createTaskController = CreateTaskController()
-        let navController = UINavigationController(rootViewController: createTaskController)
+        let navController = CustomNavigationController(rootViewController: createTaskController)
         present(navController, animated: true, completion: nil)
     }
     

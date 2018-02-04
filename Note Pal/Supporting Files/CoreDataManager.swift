@@ -35,4 +35,17 @@ class CoreDataManager {
         }
     }
     
+    func createTask(taskName: String) -> Error? {
+        let context = persistentContainer.viewContext
+        let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: context)
+        task.setValue(taskName, forKey: "name")
+        do {
+            try context.save()
+            return nil
+        } catch let err {
+            print("Failed to create task:", err)
+            return err
+        }
+    }
+    
 }

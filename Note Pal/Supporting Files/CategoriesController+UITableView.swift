@@ -44,7 +44,7 @@ extension CategoriesController {
         let editCategoryController = CreateCategoryController()
         editCategoryController.delegate = self
         editCategoryController.category = categories[indexPath.row]
-        let navController = CustomerNavigationController(rootViewController: editCategoryController)
+        let navController = CustomNavigationController(rootViewController: editCategoryController)
         present(navController, animated: true, completion: nil)
     }
     

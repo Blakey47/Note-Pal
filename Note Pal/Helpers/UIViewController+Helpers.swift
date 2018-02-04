@@ -18,8 +18,24 @@ extension UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancelModal))
     }
     
+    func setupSaveButton(selector: Selector) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: selector)
+    }
+    
     @objc func handleCancelModal() {
         dismiss(animated: true, completion: nil)
     }
     
+    func setupBackgroundView() {
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .clear
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(backgroundView)
+        backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        backgroundView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+    }
 }

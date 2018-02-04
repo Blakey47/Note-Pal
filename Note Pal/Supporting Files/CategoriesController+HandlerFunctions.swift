@@ -31,7 +31,7 @@ extension CategoriesController {
     
     @objc func handleAddCategory() {
         let createCategoryController = CreateCategoryController()
-        let navController = CustomerNavigationController(rootViewController: createCategoryController)
+        let navController = CustomNavigationController(rootViewController: createCategoryController)
         createCategoryController.delegate = self
         present(navController, animated: true, completion: nil)
         

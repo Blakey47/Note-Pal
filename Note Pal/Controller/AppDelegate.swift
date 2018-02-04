@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomerNavigationController: UINavigationController {
+class CustomNavigationController: UINavigationController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
