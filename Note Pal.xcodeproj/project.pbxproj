@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041D500BE5EC1974C4C290F0 /* Pods_Note_Pal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46C19452DEDD9F5ED09BE519 /* Pods_Note_Pal.framework */; };
 		A7234D212027644B00C52E6D /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7234D202027644B00C52E6D /* UIViewController+Helpers.swift */; };
 		A7234D232027654F00C52E6D /* CreateTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7234D222027654F00C52E6D /* CreateTaskController.swift */; };
 		A734494C2019308C00C467F5 /* CategoriesController+CreateCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A734494B2019308C00C467F5 /* CategoriesController+CreateCategory.swift */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46C19452DEDD9F5ED09BE519 /* Pods_Note_Pal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Note_Pal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D1CDB43747F86D211A3C37E /* Pods-Note Pal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Note Pal.release.xcconfig"; path = "Pods/Target Support Files/Pods-Note Pal/Pods-Note Pal.release.xcconfig"; sourceTree = "<group>"; };
 		A7234D202027644B00C52E6D /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		A7234D222027654F00C52E6D /* CreateTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskController.swift; sourceTree = "<group>"; };
 		A734494B2019308C00C467F5 /* CategoriesController+CreateCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoriesController+CreateCategory.swift"; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		A76D8C561FC4C59100B8613A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A76D8C581FC4C9B400B8613A /* CreateCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryController.swift; sourceTree = "<group>"; };
 		A7B396CF200BC15F00BADC26 /* NotePalModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotePalModels.xcdatamodel; sourceTree = "<group>"; };
+		CC477252942AC6ADB8F5CD16 /* Pods-Note Pal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Note Pal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Note Pal/Pods-Note Pal.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,12 +55,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041D500BE5EC1974C4C290F0 /* Pods_Note_Pal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D18CC44FC83675B5C214F24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46C19452DEDD9F5ED09BE519 /* Pods_Note_Pal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		30FDE031C456ED78E1CF8E6C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC477252942AC6ADB8F5CD16 /* Pods-Note Pal.debug.xcconfig */,
+				5D1CDB43747F86D211A3C37E /* Pods-Note Pal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A7234D1F2027642F00C52E6D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +92,8 @@
 			children = (
 				A76D8C371FC45B7B00B8613A /* Note Pal */,
 				A76D8C361FC45B7B00B8613A /* Products */,
+				30FDE031C456ED78E1CF8E6C /* Pods */,
+				2D18CC44FC83675B5C214F24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,9 +168,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A76D8C471FC45B7B00B8613A /* Build configuration list for PBXNativeTarget "Note Pal" */;
 			buildPhases = (
+				7F03849982866984E599574D /* [CP] Check Pods Manifest.lock */,
 				A76D8C311FC45B7B00B8613A /* Sources */,
 				A76D8C321FC45B7B00B8613A /* Frameworks */,
 				A76D8C331FC45B7B00B8613A /* Resources */,
+				F7FAF8ABCCAC9A16B2965708 /* [CP] Embed Pods Frameworks */,
+				82FFFA9977083B4F886089E6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,6 +230,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7F03849982866984E599574D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Note Pal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82FFFA9977083B4F886089E6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Note Pal/Pods-Note Pal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7FAF8ABCCAC9A16B2965708 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Note Pal/Pods-Note Pal-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DateTimePicker/DateTimePicker.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTimePicker.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Note Pal/Pods-Note Pal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A76D8C311FC45B7B00B8613A /* Sources */ = {
@@ -356,6 +437,7 @@
 		};
 		A76D8C481FC45B7B00B8613A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC477252942AC6ADB8F5CD16 /* Pods-Note Pal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -371,6 +453,7 @@
 		};
 		A76D8C491FC45B7B00B8613A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D1CDB43747F86D211A3C37E /* Pods-Note Pal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,0 +1,6 @@
+framework module Pods_Note_Pal {
+  umbrella header "Pods-Note Pal-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DateTimePicker
 
 protocol CreateTaskControllerDelegate {
     func didAddTask(task: Task)
@@ -15,7 +16,6 @@ protocol CreateTaskControllerDelegate {
 class CreateTaskController: UIViewController {
     
     var category: Category?
-    
     var delegate: CreateTaskControllerDelegate?
     
     let nameLabel: UILabel = {
@@ -32,6 +32,22 @@ class CreateTaskController: UIViewController {
         textField.placeholder = "Enter name"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
+    }()
+    
+    let dueDateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Due Date"
+        label.backgroundColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let dueDateTextField: UITextField = {
+        let textView = UITextField()
+        textView.text = ""
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
     }()
     
     override func viewDidLoad() {
@@ -59,6 +75,15 @@ class CreateTaskController: UIViewController {
         }
     }
     
+    @objc func handleDateSelection() {
+        let picker = DateTimePicker.show(selected: Date.init())
+        picker.is12HourFormat = true
+        picker.completionHandler = { date in
+            self.dueDateTextField.inputView = picker
+//            self.dueDateTextField.text = picker.selectedDate.
+        }
+    }
+    
     private func setupUI() {
         setupBackgroundView()
         
@@ -73,6 +98,18 @@ class CreateTaskController: UIViewController {
         nameTextField.leftAnchor.constraint(equalTo: nameLabel.rightAnchor).isActive = true
         nameTextField.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         nameTextField.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
+        
+        view.addSubview(dueDateLabel)
+        dueDateLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
+        dueDateLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        dueDateLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        dueDateLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        view.addSubview(dueDateTextField)
+        dueDateTextField.topAnchor.constraint(equalTo: dueDateLabel.topAnchor).isActive = true
+        dueDateTextField.leftAnchor.constraint(equalTo: dueDateLabel.rightAnchor).isActive = true
+        dueDateTextField.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        dueDateTextField.bottomAnchor.constraint(equalTo: dueDateLabel.bottomAnchor).isActive = true
     }
 }
 
