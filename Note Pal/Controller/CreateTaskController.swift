@@ -110,7 +110,7 @@ class CreateTaskController: UIViewController {
         } else {
             dismiss(animated: true, completion: {
                 self.delegate?.didAddTask(task: tuple.0!)
-                
+                self.delegate?.didAddTaskInformation(taskInformation: tuple.1!)
             })
         }
     }
@@ -145,7 +145,7 @@ class CreateTaskController: UIViewController {
     private func setupUI() {
         setupBackgroundView()
         settingUpDueDatePicker()
-        dateFormatter.dateFormat = "HH:mm dd-MM-yyyy"
+        dateFormatter.dateFormat = "HH:mm EEEE, dd MMM"
         
         view.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: view.topAnchor).isActive = true

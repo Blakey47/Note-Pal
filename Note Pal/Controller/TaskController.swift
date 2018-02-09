@@ -32,12 +32,25 @@ class TaskController: UITableViewController, CreateTaskControllerDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         let task = tasks[indexPath.row]
+        let expandMenuButton = UIButton(type: .system)
+        expandMenuButton.setTitle("Expand", for: .normal)
+        expandMenuButton.translatesAutoresizingMaskIntoConstraints = false
+        expandMenuButton.tintColor = .darkPurple
+        expandMenuButton.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
         
-        if let name = task.name, let dueDate = task.taskInformation?.dueDate {
+        cell.addSubview(expandMenuButton)
+        expandMenuButton.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -8).isActive = true
+        expandMenuButton.topAnchor.constraint(equalTo: cell.topAnchor, constant: 8).isActive = true
+        expandMenuButton.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -8).isActive = true
+        
+        if let name = task.name, let _ = task.taskInformation?.dueDate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE, dd MMM"
-            let dueDateString = "\(name) - \(dateFormatter.string(from: dueDate))"
+            let dueDateString = "\(name)"
+            // - \(dateFormatter.string(from: dueDate))
             cell.textLabel?.text = dueDateString
+            cell.imageView?.image = #imageLiteral(resourceName: "ic_list")
+            cell.imageView?.tintColor = .darkPurple
         } else {
             cell.textLabel?.text = task.name
         }
@@ -50,6 +63,7 @@ class TaskController: UITableViewController, CreateTaskControllerDelegate {
         fetchTasks()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         setupPlusButtonInNavBar(selector: #selector(handleAdd))
+        tableView.separatorColor = .clear
     }
     
     func didAddTask(task: Task) {
@@ -67,6 +81,10 @@ class TaskController: UITableViewController, CreateTaskControllerDelegate {
         createTaskController.category = category
         let navController = CustomNavigationController(rootViewController: createTaskController)
         present(navController, animated: true, completion: nil)
+    }
+    
+    @objc private func handleExpandClose() {
+        print("Trying to expand and close task....")
     }
     
 }
