@@ -83,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				A7234D202027644B00C52E6D /* UIViewController+Helpers.swift */,
+				A76D8C501FC4724E00B8613A /* UIColor+theme.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -151,7 +152,6 @@
 		A76D8C4F1FC4722C00B8613A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A76D8C501FC4724E00B8613A /* UIColor+theme.swift */,
 				A74C926E200BDB770076553D /* CoreDataManager.swift */,
 				A734494D201931AB00C467F5 /* CategoriesController+UITableView.swift */,
 				A734494B2019308C00C467F5 /* CategoriesController+CreateCategory.swift */,

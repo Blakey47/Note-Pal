@@ -11,12 +11,15 @@ import DateTimePicker
 
 protocol CreateTaskControllerDelegate {
     func didAddTask(task: Task)
+    func didAddTaskInformation(taskInformation: TaskInformation)
 }
 
 class CreateTaskController: UIViewController {
     
     var category: Category?
     var delegate: CreateTaskControllerDelegate?
+    var dueDateAnswer = Date()
+    let dateFormatter = DateFormatter()
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -47,6 +50,7 @@ class CreateTaskController: UIViewController {
         let label = UILabel()
         label.text = ""
         label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = .darkPurple
         label.backgroundColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -78,7 +82,6 @@ class CreateTaskController: UIViewController {
         textField.borderStyle = UITextBorderStyle.roundedRect
         textField.keyboardType = .default
         textField.returnKeyType = .done
-        textField.backgroundColor = .green
         textField.clearButtonMode = .whileEditing
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -98,13 +101,16 @@ class CreateTaskController: UIViewController {
     @objc private func handleSave() {
         guard let taskName = nameTextField.text else { return }
         guard let category = category else { return }
+        guard let taskNotes = notesTextField.text else { return }
+        let dueDate = dueDateAnswer
         
-        let tuple = CoreDataManager.shared.createTask(taskName: taskName, category: category)
-        if let error = tuple.1 {
+        let tuple = CoreDataManager.shared.createTask(taskName: taskName, category: category, dueDate: dueDate, taskNotes: taskNotes)
+        if let error = tuple.2 {
             print(error)
         } else {
             dismiss(animated: true, completion: {
                 self.delegate?.didAddTask(task: tuple.0!)
+                
             })
         }
     }
@@ -119,14 +125,14 @@ class CreateTaskController: UIViewController {
     }
     
     func settingUpDueDatePicker() {
-        
         if dueDateAnswerLabel.text == "" {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Select Due Date", style: .plain, target: self, action: #selector(handleDueDate))
             changeDueDateButton.isHidden = true
             let picker = DateTimePicker.show(selected: Date.init())
             picker.is12HourFormat = true
             picker.completionHandler = { date in
-                self.dueDateAnswerLabel.text = String(describing: picker.selectedDate)
+                self.dueDateAnswer = picker.selectedDate
+                self.dueDateAnswerLabel.text = self.dateFormatter.string(from: self.dueDateAnswer)
                 self.settingUpDueDatePicker()
             }
         } else {
@@ -139,6 +145,7 @@ class CreateTaskController: UIViewController {
     private func setupUI() {
         setupBackgroundView()
         settingUpDueDatePicker()
+        dateFormatter.dateFormat = "HH:mm dd-MM-yyyy"
         
         view.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -180,7 +187,7 @@ class CreateTaskController: UIViewController {
         notesTextField.topAnchor.constraint(equalTo: notesLabel.topAnchor, constant: 11).isActive = true
         notesTextField.leftAnchor.constraint(equalTo: changeDueDateButton.leftAnchor).isActive = true
         notesTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-//        notesTextField.heightAnchor.constraint(equalToConstant: 200)
+        notesTextField.heightAnchor.constraint(equalToConstant: 200)
     }
 }
 

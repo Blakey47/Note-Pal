@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TaskController: UITableViewController, CreateTaskControllerDelegate {
+class TaskController: UITableViewController, CreateTaskControllerDelegate {    
     
     var category: Category?
     var tasks = [Task]()
@@ -32,7 +32,15 @@ class TaskController: UITableViewController, CreateTaskControllerDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         let task = tasks[indexPath.row]
-        cell.textLabel?.text = task.name
+        
+        if let name = task.name, let dueDate = task.taskInformation?.dueDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE, dd MMM"
+            let dueDateString = "\(name) - \(dateFormatter.string(from: dueDate))"
+            cell.textLabel?.text = dueDateString
+        } else {
+            cell.textLabel?.text = task.name
+        }
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         return cell
     }
@@ -47,6 +55,10 @@ class TaskController: UITableViewController, CreateTaskControllerDelegate {
     func didAddTask(task: Task) {
         tasks.append(task)
         tableView.reloadData()
+    }
+    
+    func didAddTaskInformation(taskInformation: TaskInformation) {
+        
     }
     
     @objc private func handleAdd() {
