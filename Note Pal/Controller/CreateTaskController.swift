@@ -43,11 +43,45 @@ class CreateTaskController: UIViewController {
         return label
     }()
     
-    let dueDateTextField: UITextField = {
-        let textView = UITextField()
-        textView.text = ""
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
+    let dueDateAnswerLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.backgroundColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let changeDueDateButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Change Due Date", for: .normal)
+        button.addTarget(self, action: #selector(changeDueDateButtonAction), for: .touchUpInside)
+        button.backgroundColor = .darkPurple
+        button.layer.cornerRadius = 15
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let notesLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Task Notes"
+        label.backgroundColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let notesTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Enter Task Notes Here...."
+        textField.font = UIFont.systemFont(ofSize: 15)
+        textField.borderStyle = UITextBorderStyle.roundedRect
+        textField.keyboardType = .default
+        textField.returnKeyType = .done
+        textField.backgroundColor = .green
+        textField.clearButtonMode = .whileEditing
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
     }()
     
     override func viewDidLoad() {
@@ -58,7 +92,7 @@ class CreateTaskController: UIViewController {
         setupCancelButton()
         setupUI()
         
-        setupSaveButton(selector: #selector(handleSave))
+        
     }
     
     @objc private func handleSave() {
@@ -75,17 +109,36 @@ class CreateTaskController: UIViewController {
         }
     }
     
-    @objc func handleDateSelection() {
-        let picker = DateTimePicker.show(selected: Date.init())
-        picker.is12HourFormat = true
-        picker.completionHandler = { date in
-            self.dueDateTextField.inputView = picker
-//            self.dueDateTextField.text = picker.selectedDate.
+    @objc func changeDueDateButtonAction(sender: UIButton) {
+        dueDateAnswerLabel.text = ""
+        settingUpDueDatePicker()
+    }
+    
+    @objc private func handleDueDate() {
+        settingUpDueDatePicker()
+    }
+    
+    func settingUpDueDatePicker() {
+        
+        if dueDateAnswerLabel.text == "" {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Select Due Date", style: .plain, target: self, action: #selector(handleDueDate))
+            changeDueDateButton.isHidden = true
+            let picker = DateTimePicker.show(selected: Date.init())
+            picker.is12HourFormat = true
+            picker.completionHandler = { date in
+                self.dueDateAnswerLabel.text = String(describing: picker.selectedDate)
+                self.settingUpDueDatePicker()
+            }
+        } else {
+            setupSaveButton(selector: #selector(handleSave))
+            changeDueDateButton.isHidden = false
         }
+        
     }
     
     private func setupUI() {
         setupBackgroundView()
+        settingUpDueDatePicker()
         
         view.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -105,11 +158,29 @@ class CreateTaskController: UIViewController {
         dueDateLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         dueDateLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        view.addSubview(dueDateTextField)
-        dueDateTextField.topAnchor.constraint(equalTo: dueDateLabel.topAnchor).isActive = true
-        dueDateTextField.leftAnchor.constraint(equalTo: dueDateLabel.rightAnchor).isActive = true
-        dueDateTextField.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        dueDateTextField.bottomAnchor.constraint(equalTo: dueDateLabel.bottomAnchor).isActive = true
+        view.addSubview(dueDateAnswerLabel)
+        dueDateAnswerLabel.topAnchor.constraint(equalTo: dueDateLabel.topAnchor).isActive = true
+        dueDateAnswerLabel.leftAnchor.constraint(equalTo: dueDateLabel.rightAnchor).isActive = true
+        dueDateAnswerLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        dueDateAnswerLabel.bottomAnchor.constraint(equalTo: dueDateLabel.bottomAnchor).isActive = true
+        
+        view.addSubview(changeDueDateButton)
+        changeDueDateButton.topAnchor.constraint(equalTo: dueDateLabel.bottomAnchor).isActive = true
+        changeDueDateButton.leftAnchor.constraint(equalTo: nameTextField.leftAnchor).isActive = true
+        changeDueDateButton.rightAnchor.constraint(equalTo: nameTextField.rightAnchor, constant: -16).isActive = true
+        changeDueDateButton.heightAnchor.constraint(equalToConstant: 50)
+        
+        view.addSubview(notesLabel)
+        notesLabel.topAnchor.constraint(equalTo: changeDueDateButton.bottomAnchor).isActive = true
+        notesLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        notesLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        notesLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        view.addSubview(notesTextField)
+        notesTextField.topAnchor.constraint(equalTo: notesLabel.topAnchor, constant: 11).isActive = true
+        notesTextField.leftAnchor.constraint(equalTo: changeDueDateButton.leftAnchor).isActive = true
+        notesTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
+//        notesTextField.heightAnchor.constraint(equalToConstant: 200)
     }
 }
 
