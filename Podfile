@@ -8,5 +8,6 @@ target 'Note Pal' do
   # Pods for Note Pal
 
 pod 'DateTimePicker'
+pod 'YNExpandableCell'
 
 end
